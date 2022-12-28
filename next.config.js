@@ -1,7 +1,26 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+/** @type {import("next").NextConfig} */
 
-module.exports = nextConfig
+const nextConfig = {
+	experimental: {
+		esmExternals: false,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	images: {
+		loader: "custom",
+	},
+	webpack: config => {
+		config.module.rules.push({
+			test: /\.svg$/,
+			use: ["@svgr/webpack"],
+		});
+
+		return config;
+	},
+};
+
+module.exports = nextConfig;

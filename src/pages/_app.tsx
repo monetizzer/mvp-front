@@ -1,3 +1,3 @@
-import { MyApp } from "../web/pages/App";
+import { App } from "components/pages/App";
 
-export default MyApp
+export default App;

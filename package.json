@@ -1,35 +1,40 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@babel/core": "^7.19.6",
-    "@chakra-ui/react": "^2.3.5",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11",
-    "@hookform/resolvers": "^2.9.9",
-    "axios": "^1.1.3",
-    "framer-motion": "^6",
-    "next": "12.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.37.0",
-    "react-icons": "^4.6.0",
-    "react-use-file-upload": "^0.9.5",
-    "yup": "^0.32.11"
-  },
-  "devDependencies": {
-    "@types/node": "18.11.0",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.25.0",
-    "eslint-config-next": "12.3.1",
-    "typescript": "4.8.4"
-  }
+	"name": "mvp-front",
+	"version": "1.0.0",
+	"private": false,
+	"license": "MIT",
+	"dependencies": {
+		"@chakra-ui/react": "^2.4.5",
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
+		"framer-motion": "^6",
+		"next": "^12.3.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@chakra-ui/cli": "^2.3.0",
+		"@svgr/webpack": "^6.5.1",
+		"@techmmunity/eslint-config": "^5.2.4",
+		"@types/node": "^18.11.3",
+		"@types/react": "^18.0.21",
+		"@types/react-dom": "^18.0.6",
+		"eslint": "^8.26.0",
+		"husky": "^8.0.2",
+		"lint-staged": "^13.1.0",
+		"prettier": "^2.7.1",
+		"typescript": "^4.8.4"
+	},
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"export": "next export",
+		"start": "next start",
+		"husky:pre-commit": "lint-staged && tsc",
+		"lint": "eslint . --quiet",
+		"format": "eslint src --fix --quiet",
+		"type-check": "tsc",
+		"gen:theme-typings": "chakra-cli tokens ./src/theme/index.ts",
+		"postinstall": "yarn gen:theme-typings"
+	}
 }
