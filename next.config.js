@@ -19,9 +19,6 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
-	images: {
-		loader: "custom",
-	},
 	webpack: config => {
 		config.module.rules.push({
 			test: /\.svg$/,
