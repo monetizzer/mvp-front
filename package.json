@@ -29,7 +29,6 @@
 	"scripts": {
 		"dev": "next",
 		"build": "next build",
-		"export": "next export",
 		"start": "next start",
 		"husky:pre-commit": "lint-staged && tsc",
 		"lint": "eslint . --quiet",
