@@ -20,6 +20,7 @@
 	"include": [
 		"next.config.js",
 		"next-i18next.config.js",
+		"next-sitemap.config.js",
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx"
