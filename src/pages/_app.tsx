@@ -1,3 +1,4 @@
 import { App } from "components/pages/App";
+import { appWithTranslation } from "next-i18next";
 
-export default App;
+export default appWithTranslation(App);

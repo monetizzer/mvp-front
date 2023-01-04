@@ -17,6 +17,12 @@
 		"baseUrl": "src"
 	},
 	"files": ["src/types/react.d.ts"],
-	"include": ["next.config.js", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		"next.config.js",
+		"next-i18next.config.js",
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx"
+	],
 	"exclude": ["node_modules"]
 }
