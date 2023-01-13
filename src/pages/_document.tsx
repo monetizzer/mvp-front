@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
 					<link rel="apple-touch-icon" href="/apple-icon.png" />
 					<link rel="cannonical" href={SITE.url} />
 					<link
-						href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+						href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700&display=swap"
 						rel="stylesheet"
 					/>
 
@@ -63,7 +63,10 @@ export default class MyDocument extends Document {
 					/>
 				</Head>
 				<body>
-					<ColorModeScript initialColorMode={theme.config.initialColorMode} />
+					<ColorModeScript
+						type="cookie"
+						initialColorMode={theme.config.initialColorMode}
+					/>
 					<Main />
 					<NextScript />
 				</body>

@@ -20,7 +20,7 @@ export const styles = {
 		"body": {
 			background: "background",
 			color: "firstText",
-			fontFamily: "roboto",
+			fontFamily: "sora",
 			fontSize: "text.1",
 			fontWeight: "normal",
 			lineHeight: "text.1",

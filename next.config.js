@@ -22,6 +22,9 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
+	images: {
+		domains: ["external-content.duckduckgo.com"],
+	},
 	webpack: config => {
 		config.module.rules.push({
 			test: /\.svg$/,

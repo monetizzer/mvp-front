@@ -2,47 +2,48 @@
 
 import { extendTheme } from "@chakra-ui/react";
 
+import { Button } from "./components/button";
+import { Heading } from "./components/heading";
+import { Input } from "./components/input";
 import { styles } from "./styles";
 
 const customTheme = {
 	semanticTokens: {
 		colors: {
+			vividPrimary: "linear-gradient(88.11deg, #ED213A 0%, #93291E 100%);",
 			primary: {
-				_dark: "#black",
+				_dark: "linear-gradient(360deg, #131318 37.28%, #00000000 99.41%)",
 			},
-			vividPrimary: "#0070F3",
 			secondary: {
-				_dark: "#111111",
+				_dark: "#1E1D24",
 			},
-			vividSecondary: "#FA2349",
 			background: "primary",
 			firstText: {
 				_dark: "#E6E6E9",
 			},
 			secondText: {
-				_dark: "#888888",
-			},
-			border: {
-				_dark: "#333333",
+				_dark: "#A0A0A0",
 			},
 			alternate: {
-				_dark: "#555555",
+				_dark: "#525252",
 			},
-			outlinePrimary: "vividPrimary",
-			outlineSecondary: {
-				_dark: "white",
+			outline: {
+				_dark: "#FFFFFF",
 			},
 			link: "vividPrimary",
 			button: "vividPrimary",
 			error: "red.500",
-			required: "red.500",
+			google: "#4285F4",
+			twitter: "#1DA1F2",
+			discord: "#5865F2",
+			facebook: "#1877F2",
 		},
 	},
 	shadows: {
-		outline: "0 0 0 3px var(--chakra-colors-outlinePrimary)",
+		outline: "0 0 0 3px var(--chakra-colors-outline)",
 	},
 	fonts: {
-		roboto: "Roboto, sans-serif",
+		sora: "Sora, sans-serif",
 	},
 	fontSizes: {
 		heading: {
@@ -197,6 +198,11 @@ const customTheme = {
 		bp6: "768px",
 	},
 	styles,
+	components: {
+		Button,
+		Heading,
+		Input,
+	},
 	config: {
 		initialColorMode: "dark",
 		useSystemColorMode: false,
