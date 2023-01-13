@@ -1,0 +1,20 @@
+{
+	"mainSection": {
+		"header": {
+			"title": "Registrar-se",
+			"description": "Entre agora na Maitê conta e acesse os melhores conteúdos do mercado"
+		},
+		"form": {
+			"inputs": {
+				"username": {
+					"placeholder": "Insira seu nome de usuário"
+				},
+				"email": {
+					"placeholder": "Insira seu Email"
+				}
+			},
+			"submit": "Continuar"
+		},
+		"divider": "Ou entrar com"
+	}
+}
