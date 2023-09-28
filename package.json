@@ -1,47 +1,37 @@
 {
-	"name": "mvp-front",
-	"version": "1.0.0",
-	"private": false,
-	"license": "MIT",
-	"dependencies": {
-		"@chakra-ui/react": "^2.4.5",
-		"@emotion/react": "^11",
-		"@emotion/styled": "^11",
-		"framer-motion": "^6",
-		"i18next": "^22.4.8",
-		"next": "^13.1.2",
-		"next-i18next": "^13.0.3",
-		"next-pwa": "^5.6.0",
-		"next-sitemap": "^3.1.44",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-hook-form": "^7.41.5",
-		"react-i18next": "^12.1.1",
-		"react-icons": "^4.7.1"
-	},
-	"devDependencies": {
-		"@chakra-ui/cli": "^2.3.0",
-		"@svgr/webpack": "^6.5.1",
-		"@techmmunity/eslint-config": "^5.2.4",
-		"@types/node": "^18.11.3",
-		"@types/react": "^18.0.21",
-		"@types/react-dom": "^18.0.6",
-		"eslint": "^8.26.0",
-		"husky": "^8.0.2",
-		"lint-staged": "^13.1.0",
-		"prettier": "^2.7.1",
-		"typescript": "^4.8.4"
-	},
-	"scripts": {
-		"dev": "next",
-		"build": "next build",
-		"postbuild": "next-sitemap --config next-sitemap.config.js",
-		"start": "next start",
-		"husky:pre-commit": "lint-staged && tsc",
-		"lint": "eslint . --quiet",
-		"format": "eslint src --fix --quiet",
-		"type-check": "tsc",
-		"gen:theme-typings": "chakra-cli tokens ./src/theme/index.ts",
-		"postinstall": "yarn gen:theme-typings"
-	}
+  "name": "mvp-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
+    "@tanstack/react-query": "^4.35.3",
+    "@tanstack/react-query-devtools": "^4.35.3",
+    "axios": "^1.5.1",
+    "clsx": "^2.0.0",
+    "daisyui": "^3.8.1",
+    "react-hook-form": "^7.46.2",
+    "react-toastify": "^9.1.3",
+    "react-icons": "^4.11.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "next": "latest",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "@types/react": "latest",
+    "@types/node": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest"
+  }
 }

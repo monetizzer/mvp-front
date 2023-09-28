@@ -1,38 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-require-imports */
-/** @type {import("next").NextConfig} */
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
 
-const withPWA = require("next-pwa")({
-	disable: process.env.NODE_ENV === "development",
-	dest: "public",
-	register: true,
-	sw: "/sw.js",
-});
-
-const { i18n } = require("./next-i18next.config");
-
-const nextConfig = {
-	i18n,
-	experimental: {
-		esmExternals: false,
-	},
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
-	typescript: {
-		ignoreBuildErrors: true,
-	},
-	images: {
-		domains: ["external-content.duckduckgo.com"],
-	},
-	webpack: config => {
-		config.module.rules.push({
-			test: /\.svg$/,
-			use: ["@svgr/webpack"],
-		});
-
-		return config;
-	},
-};
-
-module.exports = withPWA(nextConfig);
+module.exports = nextConfig

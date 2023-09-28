@@ -1,18 +1,3 @@
 {
-	"root": true,
-	"plugins": ["eslint-plugin-import-helpers"],
-	"extends": [
-		"@techmmunity/eslint-config/common",
-		"@techmmunity/eslint-config/ts-nextjs"
-	],
-	"rules": {
-		"import-helpers/order-imports": [
-			"warn",
-			{
-				"newlinesBetween": "always",
-				"groups": ["module", ["parent", "sibling", "index"]],
-				"alphabetize": { "order": "asc", "ignoreCase": true }
-			}
-		]
-	}
+  "extends": "next/core-web-vitals"
 }

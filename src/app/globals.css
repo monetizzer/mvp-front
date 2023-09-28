@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type="file"]::file-selector-button {
+		@apply bg-gray-200 border-none text-lg h-full;
+	}
+}
+
+@layer components {
+	.drawer-side {
+		z-index: 22;
+	}
+}
+
+@layer utilities {
+	.paragraph-line-3 {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.btn-responsive {
+		@apply xs:btn-xs sm:btn-sm md:btn-md xl:btn-lg;
+	}
+
+	.container-padding {
+		@apply py-4 md:py-6 px-6 md:px-8;
+	}
+}
