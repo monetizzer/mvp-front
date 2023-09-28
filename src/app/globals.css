@@ -33,6 +33,6 @@
 	}
 
 	.container-padding {
-		@apply py-4 md:py-6 px-6 md:px-8;
+		@apply py-4 md:py-6 px-2 xs:px-6 md:px-8;
 	}
 }
