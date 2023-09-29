@@ -1,31 +1,29 @@
-import Providers from '@/utils/providers'
-import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+import Providers from "utils/providers";
 import "react-toastify/dist/ReactToastify.css";
-import { Roboto } from 'next/font/google'
+import "./globals.css";
 
 const roboto = Roboto({
-  weight: ['100', '300', '400', '500', '700', '900'],
-  subsets: ['latin'],
-})
+	weight: ["100", "300", "400", "500", "700", "900"],
+	subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: 'Maitê',
-  description: 'Melhor site para gerenciar fotos da sua coleção',
-}
+	title: "Maitê",
+	description: "Melhor site para gerenciar fotos da sua coleção",
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="pt-br" data-theme="corporate">
-      <body className={roboto.className}>
-        <Providers>
-          {children}
-        </Providers>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="pt-br" data-theme="corporate">
+			<body className={roboto.className}>
+				<Providers>{children}</Providers>
+			</body>
+		</html>
+	);
 }

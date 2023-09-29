@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import React from "react";
 import { ToastContainer } from "react-toastify";
 
 function Providers({ children }: React.PropsWithChildren) {
@@ -16,7 +16,7 @@ function Providers({ children }: React.PropsWithChildren) {
 					refetchOnMount: false,
 				},
 			},
-		})
+		}),
 	);
 
 	return (
