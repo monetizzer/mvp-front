@@ -5,11 +5,9 @@ export default function Auth() {
 				<div className="xs:card flex-shrink-0 w-full max-w-sm xs:shadow-md xs:bg-base-100">
 					<div className="card-body">
 						<h2 className="card-title">Texto</h2>
-
-
 					</div>
 				</div>
 			</section>
 		</main>
-	)
+	);
 }
