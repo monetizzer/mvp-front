@@ -79,7 +79,7 @@ export const InputBase: ForwardRefRenderFunction<
 			) : null}
 
 			{errorMessage ? (
-				<span className=" font-light text-error">
+				<span className="font-light text-error">
 					{String(errorMessage?.message)}
 				</span>
 			) : null}
