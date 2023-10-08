@@ -1,10 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { BsDiscord } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 
-export default function Login() {
+const DISCORD_LINK_AUTH = process.env["DISCORD_LINK_AUTH"];
+
+const Auth = () => {
 	return (
 		<>
 			<header className="card-body flex items-center justify-center w-full mb-8">
@@ -17,7 +17,7 @@ export default function Login() {
 					type="button"
 					title="Logar com discord"
 					className="text-white btn btn-discord rounded-xl w-full"
-					href={process.env["NEXT_PUBLIC_DISCORD_LINK_AUTH"]!}
+					href={DISCORD_LINK_AUTH || "#"}
 				>
 					<BsDiscord className="mr-2" />
 					Discord
@@ -27,7 +27,7 @@ export default function Login() {
 					type="Link"
 					title="Logar com email"
 					className="btn btn-secondary rounded-xl w-full"
-					href="/login/e-mail"
+					href="/auth/e-mail"
 				>
 					<MdEmail className="mr-2" />
 					E-mail
@@ -35,4 +35,6 @@ export default function Login() {
 			</div>
 		</>
 	);
-}
+};
+
+export default Auth;

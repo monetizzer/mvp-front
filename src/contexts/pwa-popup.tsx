@@ -1,12 +1,6 @@
 "use client";
 
-import {
-	ReactNode,
-	createContext,
-	useContext,
-	useEffect,
-	useState,
-} from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface PwaContextType {
 	pwaPrompt?: BeforeInstallPromptEvent;
@@ -16,9 +10,13 @@ interface PwaContextType {
 	setHasInstalledPwa: (hasInstalledPwa: boolean) => void;
 }
 
-const PwaContext = createContext<PwaContextType>({} as PwaContextType);
+interface Props {
+	children: ReactNode;
+}
 
-export function PwaProvider({ children }: React.PropsWithChildren): ReactNode {
+export const PwaContext = createContext<PwaContextType>({} as PwaContextType);
+
+export const PwaProvider: FC<Props> = ({ children }) => {
 	const [pwaPrompt, setPwaPrompt] = useState<
 		BeforeInstallPromptEvent | undefined
 	>();
@@ -69,8 +67,4 @@ export function PwaProvider({ children }: React.PropsWithChildren): ReactNode {
 			{children}
 		</PwaContext.Provider>
 	);
-}
-
-export function usePwaContext() {
-	return useContext(PwaContext);
-}
+};

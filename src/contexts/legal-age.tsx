@@ -1,25 +1,21 @@
 "use client";
 
-import {
-	ReactNode,
-	createContext,
-	useContext,
-	useEffect,
-	useState,
-} from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 interface LegalAgeContextType {
 	shouldDisplayModal: boolean;
 	setShouldDisplayModal: (shouldDisplayModal: boolean) => void;
 }
 
-const LegalAgeContext = createContext<LegalAgeContextType>(
+interface Props {
+	children: ReactNode;
+}
+
+export const LegalAgeContext = createContext<LegalAgeContextType>(
 	{} as LegalAgeContextType,
 );
 
-export function LegalAgeProvider({
-	children,
-}: React.PropsWithChildren): ReactNode {
+export const LegalAgeProvider: FC<Props> = ({ children }) => {
 	const [shouldDisplayModal, setShouldDisplayModalState] =
 		useState<boolean>(false);
 
@@ -44,8 +40,4 @@ export function LegalAgeProvider({
 			{children}
 		</LegalAgeContext.Provider>
 	);
-}
-
-export function useLegalAgeContext() {
-	return useContext(LegalAgeContext);
-}
+};

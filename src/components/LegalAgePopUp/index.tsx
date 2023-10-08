@@ -1,9 +1,9 @@
 "use client";
 
-import { useLegalAgeContext } from "contexts/legal-age";
+import { useLegalAge } from "hooks/use-legal-age";
 
 export const LegalAgePopUp = () => {
-	const { shouldDisplayModal, setShouldDisplayModal } = useLegalAgeContext();
+	const { shouldDisplayModal, setShouldDisplayModal } = useLegalAge();
 
 	return (
 		shouldDisplayModal && (
