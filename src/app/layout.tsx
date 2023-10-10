@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Head from "next/head";
 import Providers from "utils/providers";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
@@ -10,7 +11,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-	title: "Maitê",
+	title: "Las Musas",
 	description: "Melhor site para gerenciar fotos da sua coleção",
 };
 
@@ -21,6 +22,11 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="pt-br" data-theme="corporate">
+			<Head>
+				<link rel="manifest" href="/manifest.json" />
+				<link rel="apple-touch-icon" href="/icon-192x192.png" />
+				<meta name="theme-color" content="#803b7e" />
+			</Head>
 			<body className={roboto.className}>
 				<Providers>{children}</Providers>
 			</body>
