@@ -16,7 +16,12 @@
 		"next"
 	],
 	"rules": {
-		"prettier/prettier": "error",
+		"prettier/prettier": [
+			"error",
+			{
+				"singleQuote": false
+			}
+		],
 		"import-helpers/order-imports": [
 			"warn",
 			{
