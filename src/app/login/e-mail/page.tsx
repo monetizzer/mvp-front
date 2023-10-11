@@ -29,28 +29,35 @@ const Email = () => {
 	};
 
 	return (
-		<form
-			className="flex items-center justify-center flex-col gap-6"
-			onSubmit={handleSubmit(onSubmit)}
-		>
-			<Input
-				id="email"
-				type="email"
-				labelMessage="E-mail"
-				isFullWidth
-				{...register("email", {
-					required: true,
-				})}
-			/>
-			<button
-				type="submit"
-				title="Enviar"
-				className="btn btn-secondary w-full rounded-xl"
-				disabled={isSubmitting}
+		<>
+			<header className="card-body flex items-center justify-center w-full mb-8">
+				<h2 className="card-title text-3xl text-center">
+					Entrar ou criar conta
+				</h2>
+			</header>
+			<form
+				className="flex items-center justify-center flex-col gap-6"
+				onSubmit={handleSubmit(onSubmit)}
 			>
-				Enviar
-			</button>
-		</form>
+				<Input
+					id="email"
+					type="email"
+					labelMessage="E-mail"
+					isFullWidth
+					{...register("email", {
+						required: true,
+					})}
+				/>
+				<button
+					type="submit"
+					title="Enviar"
+					className="btn btn-secondary w-full rounded-xl"
+					disabled={isSubmitting}
+				>
+					Enviar
+				</button>
+			</form>
+		</>
 	);
 };
 
