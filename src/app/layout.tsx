@@ -1,3 +1,4 @@
+import { NavBar } from "components/NavBar";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Head from "next/head";
@@ -21,14 +22,17 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="pt-br" data-theme="corporate">
+		<html lang="pt-br" data-theme="lasmusas">
 			<Head>
 				<link rel="manifest" href="/manifest.json" />
 				<link rel="apple-touch-icon" href="/icon-192x192.png" />
 				<meta name="theme-color" content="#803b7e" />
 			</Head>
 			<body className={roboto.className}>
-				<Providers>{children}</Providers>
+				<Providers>
+					{children}
+					<NavBar />
+				</Providers>
 			</body>
 		</html>
 	);

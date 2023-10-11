@@ -17,6 +17,26 @@ module.exports = {
 	},
 	plugins: [require("daisyui")],
 	daisyui: {
-		themes: ["light", "dark"],
+		themes: [
+			{
+				lasmusas: {
+					primary: "#803b7e",
+					"primary-content": "#ffffff",
+					secondary: "#ae4c7c",
+					"secondary-content": "#ffffff",
+					accent: "#f9daf4",
+					neutral: "#ae4c7c",
+					"neutral-content": "#ffffff",
+					"base-100": "#F2E3EF",
+					"base-content": "#333333",
+					".btn-discord": {
+						"background-color": "#5865F2",
+					},
+					".btn-discord:hover": {
+						"background-color": "#3442d9",
+					},
+				},
+			},
+		],
 	},
 };
