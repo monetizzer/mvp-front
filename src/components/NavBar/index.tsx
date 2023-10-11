@@ -26,7 +26,7 @@ export const NavBar = () => {
 			<Link
 				className="tooltip btn btn-ghost normal-case  flex flex-col align-center justify-center"
 				data-tip="Conta"
-				href="/conta"
+				href="/login"
 			>
 				<FaUserAlt />
 				<span className="hidden md:block">Conta</span>
