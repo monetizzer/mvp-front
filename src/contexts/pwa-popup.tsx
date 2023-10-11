@@ -18,8 +18,7 @@ interface PwaContextType {
 
 const PwaContext = createContext<PwaContextType>({} as PwaContextType);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function PwaProvider({ children }: any): ReactNode {
+export function PwaProvider({ children }: React.PropsWithChildren): ReactNode {
 	const [pwaPrompt, setPwaPrompt] = useState<
 		BeforeInstallPromptEvent | undefined
 	>();
