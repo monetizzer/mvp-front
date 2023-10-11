@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 
-function Providers({ children }: React.PropsWithChildren) {
+export const ReactQueryContext = ({ children }: React.PropsWithChildren) => {
 	const [client] = React.useState(
 		new QueryClient({
 			defaultOptions: {
@@ -26,6 +26,4 @@ function Providers({ children }: React.PropsWithChildren) {
 			<ToastContainer />
 		</QueryClientProvider>
 	);
-}
-
-export default Providers;
+};
