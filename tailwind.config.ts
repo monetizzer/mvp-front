@@ -35,6 +35,10 @@ module.exports = {
 					".btn-discord:hover": {
 						"background-color": "#3442d9",
 					},
+					".modal:not(dialog:not(.modal-open))": {
+						"background-color": "rgba(0, 0, 0, 0.8)",
+						animation: "modal-pop 0.2s ease-out;",
+					},
 				},
 			},
 		],

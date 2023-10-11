@@ -1,3 +1,4 @@
+import { LegalAgePopUp } from "components/LegalAgePopUp";
 import { NavBar } from "components/NavBar";
 import { PwaPopUp } from "components/PwaPopUp";
 import { Providers } from "contexts/providers";
@@ -32,6 +33,7 @@ export default function RootLayout({
 			<body className={roboto.className}>
 				<div className="relative">
 					<Providers>
+						<LegalAgePopUp />
 						<PwaPopUp />
 						{children}
 						<NavBar />
