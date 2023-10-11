@@ -1,8 +1,9 @@
 import { NavBar } from "components/NavBar";
+import { PwaPopUp } from "components/PwaPopUp";
+import { Providers } from "contexts/providers";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Head from "next/head";
-import Providers from "utils/providers";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
@@ -29,10 +30,13 @@ export default function RootLayout({
 				<meta name="theme-color" content="#803b7e" />
 			</Head>
 			<body className={roboto.className}>
-				<Providers>
-					{children}
-					<NavBar />
-				</Providers>
+				<div className="relative">
+					<Providers>
+						<PwaPopUp />
+						{children}
+						<NavBar />
+					</Providers>
+				</div>
 			</body>
 		</html>
 	);
