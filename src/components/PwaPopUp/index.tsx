@@ -1,11 +1,11 @@
 "use client";
 
-import { usePwaContext } from "contexts/pwa-popup";
+import { usePwaPopUp } from "hooks/use-pwa-popup";
 import { FaDownload } from "react-icons/fa";
 
 export const PwaPopUp = () => {
 	const { hasInstalledPwa, hidePwaPopUp, pwaPrompt, setHidePwaPopUp } =
-		usePwaContext();
+		usePwaPopUp();
 
 	return (
 		!hasInstalledPwa &&

@@ -6,7 +6,7 @@ interface Props {
 	children: ReactNode;
 }
 
-const LoginLayout: FC<Props> = ({ children }) => {
+const AuthLayout: FC<Props> = ({ children }) => {
 	return (
 		<main className="flex justify-center w-full min-h-[100dvh]">
 			<section className="flex items-center justify-center w-full max-w-7xl container-padding">
@@ -18,4 +18,4 @@ const LoginLayout: FC<Props> = ({ children }) => {
 	);
 };
 
-export default LoginLayout;
+export default AuthLayout;

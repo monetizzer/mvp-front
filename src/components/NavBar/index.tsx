@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
 import { ImFire, ImHome3 } from "react-icons/im";
@@ -26,7 +24,7 @@ export const NavBar = () => {
 			<Link
 				className="tooltip btn btn-ghost normal-case  flex flex-col align-center justify-center"
 				data-tip="Conta"
-				href="/login"
+				href="/auth"
 			>
 				<FaUserAlt />
 				<span className="hidden md:block">Conta</span>

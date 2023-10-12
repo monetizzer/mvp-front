@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 
 const Success = () => {
 	const searchParams = useSearchParams();
-
 	const email = searchParams.get("e-mail");
 
 	return (
@@ -30,7 +29,7 @@ const Success = () => {
 						Enviar novamente
 					</button>
 					<Link
-						href="/login/e-mail"
+						href="/auth/e-mail"
 						title="Trocar e-mail"
 						className="btn btn-link"
 					>

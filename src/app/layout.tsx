@@ -1,12 +1,17 @@
 import { LegalAgePopUp } from "components/LegalAgePopUp";
 import { NavBar } from "components/NavBar";
 import { PwaPopUp } from "components/PwaPopUp";
-import { Providers } from "contexts/providers";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
+import Providers from "utils/providers";
+import { ReactNode } from "react";
+
+interface Props {
+	children: ReactNode;
+}
 
 const roboto = Roboto({
 	weight: ["100", "300", "400", "500", "700", "900"],
@@ -18,11 +23,7 @@ export const metadata: Metadata = {
 	description: "Melhor site para gerenciar fotos da sua coleção",
 };
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+const RootLayout: FC<Props> = ({ children }) => {
 	return (
 		<html lang="pt-br" data-theme="lasmusas">
 			<Head>
@@ -42,4 +43,6 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;

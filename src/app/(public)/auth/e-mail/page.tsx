@@ -22,7 +22,7 @@ const Email = () => {
 
 	const onSubmit = (values: IForm) => {
 		if (isValid) {
-			router.push(`e-mail/success?e-mail=${values.email}`);
+			router.push(`/auth/e-mail/success?e-mail=${values.email}`);
 
 			return;
 		}
