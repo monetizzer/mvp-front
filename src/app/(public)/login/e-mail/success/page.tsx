@@ -29,7 +29,7 @@ const Success = () => {
 						Enviar novamente
 					</button>
 					<Link
-						href="/auth/e-mail"
+						href="/login/e-mail"
 						title="Trocar e-mail"
 						className="btn btn-link"
 					>

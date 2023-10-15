@@ -27,7 +27,7 @@ const Auth = () => {
 					type="Link"
 					title="Logar com email"
 					className="btn btn-secondary rounded-xl w-full"
-					href="/auth/e-mail"
+					href="/login/e-mail"
 				>
 					<MdEmail className="mr-2" />
 					E-mail

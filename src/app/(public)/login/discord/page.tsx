@@ -1,9 +1,10 @@
 "use client";
 
+import { setCookie } from "cookies-next";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+
 import Loading from "./loading";
-import { setCookie } from "cookies-next";
 
 const API_URL = process.env["NEXT_PUBLIC_API_URL"];
 
@@ -16,7 +17,7 @@ const Discord = () => {
 	useEffect(() => {
 		const tokenFetch = async () => {
 			try {
-				const response = await fetch(`${API_URL}/auth/discord`, {
+				const response = await fetch(`${API_URL}/login/discord`, {
 					method: "POST",
 					body: JSON.stringify({ code }),
 					headers: {

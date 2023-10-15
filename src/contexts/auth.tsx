@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useState, useEffect, ReactNode } from "react";
 import { getCookie } from "cookies-next";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import { User } from "types/user";
 
 interface IAuthContext {
