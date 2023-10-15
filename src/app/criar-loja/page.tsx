@@ -117,7 +117,7 @@ export default function Documents() {
 							<button
 								type="submit"
 								title="Enviar"
-								className="btn btn-secondary w-full rounded-xl mt-4"
+								className="btn btn-secondary w-full mt-4"
 								disabled={isSubmitting}
 							>
 								Criar

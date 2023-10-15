@@ -13,7 +13,7 @@ export const NavBar = () => {
 			<Link
 				className="tooltip btn btn-ghost normal-case flex flex-col align-center justify-center"
 				data-tip="Meus Conteúdos"
-				href={user ? "/login" : "/meus-conteudos"}
+				href={user ? "/meus-conteudos" : "/login"}
 			>
 				<ImFire />
 				<span className="hidden md:block">Meus Conteúdos</span>
@@ -29,7 +29,7 @@ export const NavBar = () => {
 			<Link
 				className="tooltip btn btn-ghost normal-case  flex flex-col align-center justify-center"
 				data-tip="Conta"
-				href={user ? "/login" : "/conta"}
+				href={user ? "/conta" : "/login"}
 			>
 				<FaUserAlt />
 				<span className="hidden md:block">Conta</span>
