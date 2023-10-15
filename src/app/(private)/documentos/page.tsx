@@ -113,7 +113,7 @@ export default function Documents() {
 
 								<button
 									title="Continuar"
-									className="btn btn-secondary w-full rounded-xl mt-4"
+									className="btn btn-secondary w-full mt-4"
 									onClick={() => setStage("2")}
 								>
 									Continuar
@@ -174,14 +174,14 @@ export default function Documents() {
 
 								<button
 									title="Continuar"
-									className="btn btn-secondary w-full rounded-xl mt-4"
+									className="btn btn-secondary w-full mt-4"
 									onClick={() => setStage("3")}
 								>
 									Continuar
 								</button>
 								<button
 									title="Voltar"
-									className="btn w-full rounded-xl mt-4"
+									className="btn w-full mt-4"
 									onClick={() => setStage("1")}
 								>
 									Voltar
@@ -213,14 +213,14 @@ export default function Documents() {
 								<button
 									type="submit"
 									title="Enviar"
-									className="btn btn-secondary w-full rounded-xl mt-4"
+									className="btn btn-secondary w-full mt-4"
 									disabled={isSubmitting}
 								>
 									Enviar
 								</button>
 								<button
 									title="Voltar"
-									className="btn w-full rounded-xl mt-4"
+									className="btn w-full mt-4"
 									onClick={() => setStage("2")}
 								>
 									Voltar

@@ -17,7 +17,7 @@ const Discord = () => {
 	useEffect(() => {
 		const tokenFetch = async () => {
 			try {
-				const response = await fetch(`${API_URL}/login/discord`, {
+				const response = await fetch(`${API_URL}/auth/discord`, {
 					method: "POST",
 					body: JSON.stringify({ code }),
 					headers: {
@@ -39,7 +39,7 @@ const Discord = () => {
 	if (!token) return <Loading />;
 
 	setCookie("token", token);
-	router.push("/user");
+	router.push("/");
 };
 
 export default Discord;

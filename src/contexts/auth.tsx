@@ -1,11 +1,12 @@
 "use client";
 
-import { getCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { User } from "types/user";
 
 interface IAuthContext {
 	user?: User | null;
+	logout: () => void;
 }
 
 interface Props {
@@ -17,7 +18,7 @@ const API_URL = process.env["NEXT_PUBLIC_API_URL"];
 export const AuthContext = createContext({} as IAuthContext);
 
 export const AuthProvider: FC<Props> = ({ children }) => {
-	const [user, setUser] = useState<User | null | undefined>(undefined);
+	const [user, setUser] = useState<User | undefined>(undefined);
 
 	useEffect(() => {
 		const userFetch = async (token: string) => {
@@ -42,10 +43,17 @@ export const AuthProvider: FC<Props> = ({ children }) => {
 			return;
 		}
 
-		setUser(null);
+		setUser(undefined);
 	}, []);
 
+	const logout = () => {
+		deleteCookie("token");
+		setUser(undefined);
+	};
+
 	return (
-		<AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+		<AuthContext.Provider value={{ user, logout }}>
+			{children}
+		</AuthContext.Provider>
 	);
 };

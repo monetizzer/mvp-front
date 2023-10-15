@@ -51,7 +51,7 @@ const Email = () => {
 				<button
 					type="submit"
 					title="Enviar"
-					className="btn btn-secondary w-full rounded-xl"
+					className="btn btn-secondary w-full"
 					disabled={isSubmitting}
 				>
 					Enviar

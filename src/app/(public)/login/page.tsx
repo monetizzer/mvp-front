@@ -16,7 +16,7 @@ const Auth = () => {
 				<Link
 					type="button"
 					title="Logar com discord"
-					className="text-white btn btn-discord rounded-xl w-full"
+					className="text-white btn btn-discord w-full"
 					href={DISCORD_LINK_AUTH || "#"}
 				>
 					<BsDiscord className="mr-2" />
@@ -26,7 +26,7 @@ const Auth = () => {
 				<Link
 					type="Link"
 					title="Logar com email"
-					className="btn btn-secondary rounded-xl w-full"
+					className="btn btn-secondary w-full"
 					href="/login/e-mail"
 				>
 					<MdEmail className="mr-2" />
