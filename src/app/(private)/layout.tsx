@@ -13,7 +13,7 @@ const PrivateLayout: FC<Props> = ({ children }) => {
 	const auth = useAuth();
 	const { user } = auth;
 
-	if (user === null) router.replace("/auth");
+	if (user === null) router.replace("/login");
 
 	return <>{children}</>;
 };

@@ -1,14 +1,19 @@
+"use client";
+
+import { useAuth } from "hooks/useAuth";
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
 import { ImFire, ImHome3 } from "react-icons/im";
 
 export const NavBar = () => {
+	const { user } = useAuth();
+
 	return (
 		<div className="navbar bg-primary text-primary-content sticky bottom-0 z-50 grid grid-cols-3 grid-rows-1 gap-4">
 			<Link
 				className="tooltip btn btn-ghost normal-case flex flex-col align-center justify-center"
 				data-tip="Meus Conteúdos"
-				href="/meus-conteudos"
+				href={user ? "/login" : "/meus-conteudos"}
 			>
 				<ImFire />
 				<span className="hidden md:block">Meus Conteúdos</span>
@@ -24,7 +29,7 @@ export const NavBar = () => {
 			<Link
 				className="tooltip btn btn-ghost normal-case  flex flex-col align-center justify-center"
 				data-tip="Conta"
-				href="/auth"
+				href={user ? "/login" : "/conta"}
 			>
 				<FaUserAlt />
 				<span className="hidden md:block">Conta</span>
