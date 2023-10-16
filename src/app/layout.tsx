@@ -1,3 +1,4 @@
+import { Footer } from "components/Footer";
 import { LegalAgePopUp } from "components/LegalAgePopUp";
 import { NavBar } from "components/NavBar";
 import { PwaPopUp } from "components/PwaPopUp";
@@ -8,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { ReactNode } from "react";
 import Providers from "utils/providers";
-import { Footer } from "components/Footer";
 
 interface Props {
 	children: ReactNode;

@@ -2,34 +2,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { products, store } from "assets/data";
+import { ProductTypeBadge } from "components/ProductTypeBadge";
 import Link from "next/link";
 import { BsPencilFill } from "react-icons/bs";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
-import { ProductTypeEnum } from "types/enums/product-type";
 import { formatMoney } from "utils/money";
-
-const getProductTypeBadge = (type: ProductTypeEnum) => {
-	switch (type) {
-		case ProductTypeEnum.PACK:
-		default: {
-			return <span className="font-bold badge badge-neutral">PACK</span>;
-		}
-		case ProductTypeEnum.VIDEO:
-		case ProductTypeEnum.CUSTOM_VIDEO: {
-			return <span className="font-bold badge badge-warning">VÍDEO</span>;
-		}
-		case ProductTypeEnum.AUDIO:
-		case ProductTypeEnum.CUSTOM_AUDIO: {
-			return <span className="font-bold badge badge-error">AUDIO</span>;
-		}
-		case ProductTypeEnum.IMAGE:
-		case ProductTypeEnum.CUSTOM_IMAGE: {
-			return <span className="font-bold badge badge-info">IMAGEM</span>;
-		}
-	}
-};
 
 const Content = ({ params }: any) => {
 	const product = products.find((p) => p.productId === params.productId)!;
@@ -59,7 +38,7 @@ const Content = ({ params }: any) => {
 			<section className="container-padding flex flex-col gap-2">
 				<div className="flex justify-between">
 					<h1 className="text-2xl font-bold col-span-3">{product.name}</h1>
-					{getProductTypeBadge(product.type)}
+					<ProductTypeBadge type={product.type} />
 				</div>
 				<p className="text-sm text-center mb-2 whitespace-pre-line">
 					{product.description}
@@ -112,7 +91,7 @@ const Content = ({ params }: any) => {
 								</div>
 								<div className="flex justify-between gap-2 w-full">
 									<span className="font-bold col-span-3">{p.name}</span>
-									{getProductTypeBadge(p.type)}
+									<ProductTypeBadge type={p.type} />
 								</div>
 								<button className="btn btn-secondary">
 									<PiShoppingCartSimpleFill />
