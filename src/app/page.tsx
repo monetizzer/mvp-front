@@ -24,6 +24,12 @@ const Home = () => {
 				>
 					Criar loja
 				</Link>
+				<Link
+					className="w-full text-white btn btn-primary"
+					href="/modelo/foobar"
+				>
+					Ver loja
+				</Link>
 				{user && (
 					<button className="w-full btn btn-error" onClick={() => logout()}>
 						Logout

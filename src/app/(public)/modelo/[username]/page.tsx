@@ -1,89 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { products, store } from "assets/data";
+import Link from "next/link";
 import { BsPencilFill } from "react-icons/bs";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
-import { DeliveryMethodEnum } from "types/enums/delivery-method";
-import { ProductStatusEnum } from "types/enums/product-status";
 import { ProductTypeEnum } from "types/enums/product-type";
-import { Product } from "types/product";
-import { Store } from "types/store";
 import { formatMoney } from "utils/money";
-
-const store: Store = {
-	storeId: "foo",
-	accountId: "foo",
-	username: "foobar",
-	name: "Mika Almeida",
-	description:
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-	bannerUrl: "https://images2.alphacoders.com/552/552709.jpg",
-	avatarUrl:
-		"https://faradayshielding.com.au/wp-content/uploads/2021/05/Image_039.jpg",
-	createdAt: new Date(),
-};
-
-const products: Array<Product> = [
-	{
-		productId: "foo",
-		storeId: store.storeId,
-		type: ProductTypeEnum.PACK,
-		status: ProductStatusEnum.APPROVED,
-		name: "Brincando com os peitos",
-		description: "",
-		price: 2500,
-		previewImagesUrls: [
-			"https://images3.alphacoders.com/165/thumb-1920-165265.jpg",
-			"https://pixy.org/src/487/4870083.jpg",
-			"https://www.imagelighteditor.com/img/bg-after.jpg",
-		],
-		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
-		createdAt: new Date(),
-	},
-	{
-		productId: "bar",
-		storeId: store.storeId,
-		type: ProductTypeEnum.AUDIO,
-		status: ProductStatusEnum.APPROVED,
-		name: "Masturbação com vibrador",
-		description: "",
-		price: 5000,
-		previewImagesUrls: ["https://pixy.org/src/487/4870083.jpg"],
-		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
-		createdAt: new Date(),
-	},
-	{
-		productId: "bar1",
-		storeId: store.storeId,
-		type: ProductTypeEnum.VIDEO,
-		status: ProductStatusEnum.APPROVED,
-		name: "2 vídeos curtos de exibindo a PPK 2 vídeos curtos de exibindo a PPK",
-		description: "",
-		price: 2500,
-		previewImagesUrls: [
-			"https://www.wallpapers13.com/wp-content/uploads/2016/01/Autumn-forest-waterfall-nature-aiyumn-HD-background-2560x1600-840x525.jpg",
-		],
-		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
-		createdAt: new Date(),
-	},
-	{
-		productId: "bar1",
-		storeId: store.storeId,
-		type: ProductTypeEnum.IMAGE,
-		status: ProductStatusEnum.APPROVED,
-		name: "55 fotos explicitas - Nudez total",
-		description: "",
-		price: 6250,
-		previewImagesUrls: [
-			"https://www.imagelighteditor.com/img/bg-after.jpg",
-			"https://www.wallpapers13.com/wp-content/uploads/2016/01/Autumn-forest-waterfall-nature-aiyumn-HD-background-2560x1600-840x525.jpg",
-		],
-		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
-		createdAt: new Date(),
-	},
-];
 
 const getProductTypeBadge = (type: ProductTypeEnum) => {
 	switch (type) {
@@ -111,9 +36,9 @@ const Model = ({ params }: any) => {
 		<main className="min-h-[100dvh] w-full">
 			<section className="relative flex justify-center mb-8">
 				<div className="absolute top-0 flex justify-between gap-4 w-full container-padding">
-					<button className="btn btn-circle btn-primary">
+					<Link className="btn btn-circle btn-primary" href="/">
 						<IoMdArrowRoundBack />
-					</button>
+					</Link>
 					<button className="btn btn-circle btn-primary">
 						<BsPencilFill />
 					</button>
@@ -135,7 +60,7 @@ const Model = ({ params }: any) => {
 					{store.name} <MdVerified className="text-blue-500 mt-1" />
 				</h1>
 				<span className="mb-4">@{store.username}</span>
-				<p className="text-sm">{store.description}</p>
+				<p className="text-sm whitespace-pre-line">{store.description}</p>
 			</section>
 
 			<section className="container-padding flex flex-col gap-4">
@@ -144,9 +69,13 @@ const Model = ({ params }: any) => {
 						<div key={p.productId} className="flex flex-col gap-2">
 							<div className="carousel rounded-md">
 								{p.previewImagesUrls.map((url, idx) => (
-									<div key={url} className="carousel-item w-full">
+									<Link
+										key={url}
+										className="carousel-item w-full"
+										href={`/conteudo/${p.productId}`}
+									>
 										<img src={url} alt={p.name + idx} className="w-full" />
-									</div>
+									</Link>
 								))}
 							</div>
 							<div className="flex justify-between gap-2 w-full">
