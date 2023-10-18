@@ -18,7 +18,7 @@ const API_URL = process.env["NEXT_PUBLIC_API_URL"];
 export const AuthContext = createContext({} as IAuthContext);
 
 export const AuthProvider: FC<Props> = ({ children }) => {
-	const [user, setUser] = useState<User | null | undefined>(undefined);
+	const [user, setUser] = useState<User | undefined>(undefined);
 
 	useEffect(() => {
 		const userFetch = async (token: string) => {
@@ -43,30 +43,13 @@ export const AuthProvider: FC<Props> = ({ children }) => {
 			return;
 		}
 
-		setUser(null);
+		setUser(undefined);
 	}, []);
 
 	const logout = () => {
 		deleteCookie("token");
-		setUser(null);
+		setUser(undefined);
 	};
-
-	if (user === undefined) {
-		return (
-			<main className="flex justify-center w-full min-h-[100dvh]">
-				<section className="flex items-center justify-center w-full max-w-7xl container-padding">
-					<div className="card w-full max-w-md flex-shrink-0 xs:bg-base-200 xs:shadow-md container-padding">
-						<header className="card-body flex items-center justify-center w-full mb-8">
-							<h2 className="card-title text-3xl text-center">Las Musas</h2>
-						</header>
-						<div className="flex items-center justify-center flex-col">
-							<progress className="progress w-56"></progress>
-						</div>
-					</div>
-				</section>
-			</main>
-		);
-	}
 
 	return (
 		<AuthContext.Provider value={{ user, logout }}>
