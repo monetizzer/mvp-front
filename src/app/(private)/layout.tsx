@@ -1,20 +1,21 @@
 "use client";
 
 import { useAuth } from "hooks/useAuth";
-import { redirect, RedirectType } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
 interface Props {
 	children: ReactNode;
 }
 
-const PublicLayout: FC<Props> = ({ children }) => {
+const PrivateLayout: FC<Props> = ({ children }) => {
+	const router = useRouter();
 	const auth = useAuth();
 	const { user } = auth;
 
-	if (user) redirect("/user", RedirectType.replace);
+	if (user === null) router.replace("/login");
 
 	return <>{children}</>;
 };
 
-export default PublicLayout;
+export default PrivateLayout;
