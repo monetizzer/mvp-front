@@ -1,4 +1,3 @@
-import { Footer } from "components/Footer";
 import { LegalAgePopUp } from "components/LegalAgePopUp";
 import { NavBar } from "components/NavBar";
 import { PwaPopUp } from "components/PwaPopUp";
@@ -7,8 +6,9 @@ import { Roboto } from "next/font/google";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import { ReactNode } from "react";
 import Providers from "utils/providers";
+import { ReactNode } from "react";
+import { Footer } from "components/Footer";
 
 interface Props {
 	children: ReactNode;
@@ -38,6 +38,7 @@ const RootLayout: FC<Props> = ({ children }) => {
 						<LegalAgePopUp />
 						<PwaPopUp />
 						{children}
+
 						<Footer />
 						<NavBar />
 					</Providers>

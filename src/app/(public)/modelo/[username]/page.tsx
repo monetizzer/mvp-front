@@ -10,7 +10,7 @@ import { MdVerified } from "react-icons/md";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
 import { formatMoney } from "utils/money";
 
-const Model = ({ params }: any) => {
+const Model = () => {
 	return (
 		<main className="min-h-[100dvh] w-full">
 			<section className="relative flex justify-center mb-8">
