@@ -1,5 +1,3 @@
-"use client";
-
 export const Footer = () => {
 	return (
 		<div className="flex flex-col text-center bg-neutral text-neutral-content container-padding">
