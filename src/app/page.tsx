@@ -1,5 +1,6 @@
-import { products } from "assets/data";
+import { products, stores } from "assets/data";
 import { ProductsCarousel } from "components/ProductsCarousel";
+import { StoresCarousel } from "components/StoresCarousel";
 import Link from "next/link";
 
 const Home = () => {
@@ -19,6 +20,10 @@ const Home = () => {
 					Carrinho
 				</Link>
 			</section>
+
+			<StoresCarousel title="⭐ Top Modelos" stores={stores} />
+
+			<StoresCarousel title="🔥 Novas Modelos" stores={stores} />
 
 			<ProductsCarousel title="⭐ Top conteúdos" products={products} />
 

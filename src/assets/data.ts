@@ -18,6 +18,34 @@ export const store: Store = {
 	createdAt: new Date(),
 };
 
+export const stores: Array<Store> = [
+	store,
+	{
+		storeId: "bar",
+		accountId: "bar",
+		username: "barfoo",
+		name: "Foo Almeida",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		bannerUrl: "https://images2.alphacoders.com/552/552709.jpg",
+		avatarUrl:
+			"https://faradayshielding.com.au/wp-content/uploads/2021/05/Image_039.jpg",
+		createdAt: new Date(),
+	},
+	{
+		storeId: "barbar",
+		accountId: "barbar",
+		username: "barbar",
+		name: "BarBar",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		bannerUrl: "https://images2.alphacoders.com/552/552709.jpg",
+		avatarUrl:
+			"https://faradayshielding.com.au/wp-content/uploads/2021/05/Image_039.jpg",
+		createdAt: new Date(),
+	},
+];
+
 export const products: Array<Product> = [
 	{
 		productId: "foo",
