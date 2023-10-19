@@ -20,10 +20,10 @@ export const ProductsCarousel = ({ title, products }: Props) => {
 				{products.map((p) => (
 					<Link
 						key={p.productId}
-						className="carousel-item max-w-64 w-64 card bg-white container-padding"
+						className="carousel-item max-w-64 w-64 card bg-white"
 						href={`/conteudo/${p.productId}`}
 					>
-						<div className="flex flex-col gap-2">
+						<div className="flex flex-col">
 							<div className="carousel rounded-md">
 								{p.previewImagesUrls.map((url, idx) => (
 									<img
@@ -34,11 +34,13 @@ export const ProductsCarousel = ({ title, products }: Props) => {
 									/>
 								))}
 							</div>
-							<div className="flex justify-between gap-2 w-full">
-								<span className="font-bold col-span-3">{p.name}</span>
-								<ProductTypeBadge type={p.type} />
+							<div className="container-padding flex flex-col items-center ">
+								<div className="flex justify-between gap-2 w-full">
+									<span className="font-bold col-span-3">{p.name}</span>
+									<ProductTypeBadge type={p.type} />
+								</div>
+								<ProductMediasCount mediasCount={p.mediasCount} />
 							</div>
-							<ProductMediasCount mediasCount={p.mediasCount} />
 						</div>
 					</Link>
 				))}
