@@ -3,7 +3,7 @@
 import { Input } from "components/Input";
 import { useForm, useFormState } from "react-hook-form";
 
-interface IForm {
+interface Form {
 	username: string;
 	name: string;
 	description: string;
@@ -13,7 +13,7 @@ interface IForm {
 }
 
 export default function Documents() {
-	const { handleSubmit, register, control } = useForm<IForm>({
+	const { handleSubmit, register, control } = useForm<Form>({
 		mode: "onChange",
 		defaultValues: {
 			username: "",
@@ -24,7 +24,7 @@ export default function Documents() {
 	});
 	const { isValid, isSubmitting } = useFormState({ control });
 
-	const onSubmit = (values: IForm) => {
+	const onSubmit = (values: Form) => {
 		if (isValid) {
 			console.log(values);
 

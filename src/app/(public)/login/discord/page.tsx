@@ -19,7 +19,10 @@ const Discord = () => {
 			try {
 				const response = await fetch(`${API_URL}/auth/discord`, {
 					method: "POST",
-					body: JSON.stringify({ code }),
+					body: JSON.stringify({
+						code,
+						origin: window.location.href.split("?").shift()!,
+					}),
 					headers: {
 						"Content-Type": "application/json",
 					},
