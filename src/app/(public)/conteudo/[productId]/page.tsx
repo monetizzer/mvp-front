@@ -4,7 +4,12 @@
 import { products, store } from "assets/data";
 import { ProductTypeBadge } from "components/ProductTypeBadge";
 import Link from "next/link";
-import { BsPencilFill } from "react-icons/bs";
+import {
+	BsCameraVideoFill,
+	BsImageFill,
+	BsPencilFill,
+	BsVolumeUpFill,
+} from "react-icons/bs";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdVerified } from "react-icons/md";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
@@ -40,6 +45,47 @@ const Content = ({ params }: any) => {
 					<h1 className="text-2xl font-bold col-span-3">{product.name}</h1>
 					<ProductTypeBadge type={product.type} />
 				</div>
+				<div className="flex gap-2 w-full">
+					{product.mediasCount?.VIDEO && (
+						<div
+							className="flex badge-video border tooltip"
+							data-tip={`${product.mediasCount?.VIDEO} videos inclusos`}
+						>
+							<div className="h-full flex items-center rounded-tl-lg rounded-bl-lg px-2">
+								<BsCameraVideoFill />
+							</div>
+							<div className="w-1/2 h-full font-bold flex items-center rounded-tr-lg rounded-br-lg px-2">
+								{product.mediasCount?.VIDEO}
+							</div>
+						</div>
+					)}
+					{product.mediasCount?.IMAGE && (
+						<div
+							className="flex badge-image border tooltip"
+							data-tip={`${product.mediasCount?.IMAGE} imagens inclusos`}
+						>
+							<div className="h-full flex items-center rounded-tl-lg rounded-bl-lg px-2">
+								<BsImageFill />
+							</div>
+							<div className="w-1/2 h-full font-bold flex items-center rounded-tr-lg rounded-br-lg px-2">
+								{product.mediasCount?.IMAGE}
+							</div>
+						</div>
+					)}
+					{product.mediasCount?.AUDIO && (
+						<div
+							className="flex badge-audio border tooltip"
+							data-tip={`${product.mediasCount?.AUDIO} audios inclusos`}
+						>
+							<div className="h-full flex items-center rounded-tl-lg rounded-bl-lg px-2">
+								<BsVolumeUpFill />
+							</div>
+							<div className="w-1/2 h-full font-bold flex items-center rounded-tr-lg rounded-br-lg px-2">
+								{product.mediasCount?.AUDIO}
+							</div>
+						</div>
+					)}
+				</div>
 				<p className="text-sm text-center mb-2 whitespace-pre-line">
 					{product.description}
 				</p>
@@ -54,7 +100,7 @@ const Content = ({ params }: any) => {
 				<h2 className="text-xl font-bold mb-4">Modelo</h2>
 
 				<Link
-					className="w-full btn h-20 min-h-20 max-h-20"
+					className="w-full btn h-24 min-h-24 max-h-24"
 					href={`/modelo/${store.username}`}
 				>
 					<img
@@ -92,6 +138,47 @@ const Content = ({ params }: any) => {
 								<div className="flex justify-between gap-2 w-full">
 									<span className="font-bold col-span-3">{p.name}</span>
 									<ProductTypeBadge type={p.type} />
+								</div>
+								<div className="flex gap-2 w-full">
+									{p.mediasCount?.VIDEO && (
+										<div
+											className="flex badge-video border tooltip"
+											data-tip={`${p.mediasCount?.VIDEO} videos inclusos`}
+										>
+											<div className="h-full flex items-center rounded-tl-lg rounded-bl-lg px-2">
+												<BsCameraVideoFill />
+											</div>
+											<div className="w-1/2 h-full font-bold flex items-center rounded-tr-lg rounded-br-lg px-2">
+												{p.mediasCount?.VIDEO}
+											</div>
+										</div>
+									)}
+									{p.mediasCount?.IMAGE && (
+										<div
+											className="flex badge-image border tooltip"
+											data-tip={`${p.mediasCount?.IMAGE} imagens inclusos`}
+										>
+											<div className="h-full flex items-center rounded-tl-lg rounded-bl-lg px-2">
+												<BsImageFill />
+											</div>
+											<div className="w-1/2 h-full font-bold flex items-center rounded-tr-lg rounded-br-lg px-2">
+												{p.mediasCount?.IMAGE}
+											</div>
+										</div>
+									)}
+									{p.mediasCount?.AUDIO && (
+										<div
+											className="flex badge-audio border tooltip"
+											data-tip={`${p.mediasCount?.AUDIO} audios inclusos`}
+										>
+											<div className="h-full flex items-center rounded-tl-lg rounded-bl-lg px-2">
+												<BsVolumeUpFill />
+											</div>
+											<div className="w-1/2 h-full font-bold flex items-center rounded-tr-lg rounded-br-lg px-2">
+												{p.mediasCount?.AUDIO}
+											</div>
+										</div>
+									)}
 								</div>
 								<button className="btn btn-secondary">
 									<PiShoppingCartSimpleFill />

@@ -39,6 +39,33 @@ module.exports = {
 						"background-color": "rgba(0, 0, 0, 0.8)",
 						animation: "modal-pop 0.2s ease-out;",
 					},
+					".badge-video": {
+						"> :first-child": {
+							"background-color": "#ffa500",
+							color: "#ffffff",
+						},
+						"> :last-child": {
+							"background-color": "#ffffff",
+						},
+					},
+					".badge-image": {
+						"> :first-child": {
+							"background-color": "#4245f7",
+							color: "#ffffff",
+						},
+						"> :last-child": {
+							"background-color": "#ffffff",
+						},
+					},
+					".badge-audio": {
+						"> :first-child": {
+							"background-color": "#00b300",
+							color: "#ffffff",
+						},
+						"> :last-child": {
+							"background-color": "#ffffff",
+						},
+					},
 				},
 			},
 		],
