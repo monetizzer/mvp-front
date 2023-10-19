@@ -1,4 +1,5 @@
 import { DeliveryMethodEnum } from "types/enums/delivery-method";
+import { MediaTypeEnum } from "types/enums/media-type";
 import { ProductStatusEnum } from "types/enums/product-status";
 import { ProductTypeEnum } from "types/enums/product-type";
 import { Product } from "types/product";
@@ -36,6 +37,11 @@ export const products: Array<Product> = [
 		],
 		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
 		createdAt: new Date(),
+		mediasCount: {
+			[MediaTypeEnum.AUDIO]: 1,
+			[MediaTypeEnum.IMAGE]: 1,
+			[MediaTypeEnum.VIDEO]: 1,
+		},
 	},
 	{
 		productId: "bar",
@@ -49,6 +55,10 @@ export const products: Array<Product> = [
 		previewImagesUrls: ["https://pixy.org/src/487/4870083.jpg"],
 		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
 		createdAt: new Date(),
+		mediasCount: {
+			[MediaTypeEnum.AUDIO]: 1,
+			[MediaTypeEnum.VIDEO]: 1,
+		},
 	},
 	{
 		productId: "bar1",
@@ -64,6 +74,10 @@ export const products: Array<Product> = [
 		],
 		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
 		createdAt: new Date(),
+		mediasCount: {
+			[MediaTypeEnum.AUDIO]: 10,
+			[MediaTypeEnum.VIDEO]: 10,
+		},
 	},
 	{
 		productId: "bar1",
@@ -79,5 +93,8 @@ export const products: Array<Product> = [
 		],
 		deliveryMethod: DeliveryMethodEnum.AUTOMATIC_OUR_PLATFORM,
 		createdAt: new Date(),
+		mediasCount: {
+			[MediaTypeEnum.AUDIO]: 500,
+		},
 	},
 ];
