@@ -12,7 +12,7 @@ const PublicLayout: FC<Props> = ({ children }) => {
 	const auth = useAuth();
 	const { user } = auth;
 
-	if (user) redirect("/user", RedirectType.replace);
+	if (user) redirect("/conta", RedirectType.replace);
 
 	return <>{children}</>;
 };
