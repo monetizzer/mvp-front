@@ -1,0 +1,203 @@
+"use client";
+
+import { isCpf } from "utils/isCpf";
+import { isCnpj } from "utils/isCnpj";
+import { Input } from "components/Input";
+import { useRouter } from "next/navigation";
+import { RefAttributes, forwardRef } from "react";
+import { useForm, useFormState } from "react-hook-form";
+import {
+	DefaultInputComponentProps,
+	isPossiblePhoneNumber,
+	formatPhoneNumber,
+} from "react-phone-number-input";
+import PhoneInput from "react-phone-number-input/react-hook-form-input";
+import { cpfMask } from "utils/cpfMask";
+import { cnpjMask } from "utils/cnpjMask";
+import { maskRevert } from "utils/maskRevert";
+
+interface IForm {
+	documentType: "BR_CPF" | "BR_CNH" | "PASSPORT";
+	documentNumber: string;
+	fullName: string;
+	birthDate: string;
+	phone: string;
+}
+
+const StageOneDocuments = () => {
+	const { handleSubmit, register, control, setValue, getValues } =
+		useForm<IForm>({
+			defaultValues: {
+				documentType: "BR_CPF",
+				documentNumber: "",
+				fullName: "",
+				birthDate: "",
+				phone: "",
+			},
+		});
+	const { isValid, isSubmitting } = useFormState({ control });
+	const router = useRouter();
+
+	const onSubmit = (values: IForm) => {
+		if (isValid) {
+			const { documentType, documentNumber, fullName, birthDate, phone } =
+				values;
+
+			const nationalNumber = formatPhoneNumber(phone);
+			const numberWithoutMask = maskRevert(nationalNumber);
+
+			window.sessionStorage.setItem("documentNumber", documentType);
+			window.sessionStorage.setItem("documentType", documentNumber);
+			window.sessionStorage.setItem("fullName", fullName);
+			window.sessionStorage.setItem("birthDate", birthDate);
+			window.sessionStorage.setItem("phone", numberWithoutMask);
+
+			router.push("/documentos/stage/2");
+
+			return;
+		}
+	};
+
+	return (
+		<form
+			className="flex items-center justify-center flex-col gap-6"
+			onSubmit={handleSubmit(onSubmit)}
+		>
+			<div className="form-control w-full max-w-xs">
+				<label className="label font-bold" htmlFor="documentType">
+					Tipo de documento
+				</label>
+				<select
+					className="select select-bordered"
+					id="documentType"
+					{...register("documentType", {
+						required: true,
+						onChange: () => {
+							setValue("documentNumber", "");
+						},
+					})}
+				>
+					<option value="BR_CPF">CPF</option>
+					<option value="BR_CNH">CNH</option>
+					<option value="PASSPORT">Passaporte</option>
+				</select>
+				<Input
+					id="documentNumber"
+					type="text"
+					labelMessage="Nº do Documento"
+					isFullWidth
+					{...register("documentNumber", {
+						required: true,
+						validate: (value) => {
+							const valueWithoutMask = maskRevert(value);
+							const documentType = getValues("documentType");
+
+							switch (documentType) {
+								case "BR_CPF":
+									return isCpf(valueWithoutMask);
+								case "BR_CNH":
+									return isCnpj(valueWithoutMask);
+								case "PASSPORT":
+									return /^[a-zA-Z0-9]{1,9}$/.test(value);
+								default:
+									return;
+							}
+						},
+						onChange: (event) => {
+							const documentType = getValues("documentType");
+							let value: string;
+
+							switch (documentType) {
+								case "BR_CPF":
+									value = cpfMask(event.target.value);
+
+									break;
+								case "BR_CNH":
+									value = cnpjMask(event.target.value);
+
+									break;
+								case "PASSPORT":
+								default:
+									value = event.target.value;
+
+									break;
+							}
+
+							setValue("documentNumber", value);
+						},
+						setValueAs: (value: string) => {
+							const valueWithoutMask = maskRevert(value);
+
+							return valueWithoutMask;
+						},
+					})}
+				/>
+				<Input
+					id="fullName"
+					type="text"
+					labelMessage="Nome completo"
+					isFullWidth
+					{...register("fullName", {
+						required: true,
+						validate: (value: string) => {
+							return /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(
+								value,
+							);
+						},
+						setValueAs: (value: string) => {
+							const newValue = value.trimStart().trimEnd();
+
+							return newValue;
+						},
+					})}
+				/>
+				<Input
+					id="name"
+					type="date"
+					labelMessage="Data de nascimento"
+					isFullWidth
+					{...register("birthDate", {
+						required: true,
+					})}
+				/>
+				<PhoneInput
+					name="phone"
+					control={control}
+					international
+					rules={{
+						required: true,
+						validate: isPossiblePhoneNumber,
+					}}
+					inputComponent={forwardRef(
+						(
+							props: DefaultInputComponentProps &
+								RefAttributes<HTMLInputElement>,
+							ref: React.ForwardedRef<HTMLInputElement>,
+						) => {
+							return (
+								<Input
+									id="phone"
+									type="tel"
+									labelMessage="Nº de telefone"
+									isFullWidth
+									ref={ref}
+									{...props}
+								/>
+							);
+						},
+					)}
+				/>
+				<button
+					type="submit"
+					disabled={isSubmitting || !isValid}
+					title="Continuar"
+					className="btn btn-secondary w-full mt-4"
+				>
+					Continuar
+				</button>
+			</div>
+		</form>
+	);
+};
+
+export default StageOneDocuments;
