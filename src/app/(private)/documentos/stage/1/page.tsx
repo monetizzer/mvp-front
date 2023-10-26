@@ -4,12 +4,11 @@ import { isCpf } from "utils/isCpf";
 import { isCnpj } from "utils/isCnpj";
 import { Input } from "components/Input";
 import { useRouter } from "next/navigation";
-import { RefAttributes, forwardRef } from "react";
+import { RefAttributes, forwardRef, useEffect } from "react";
 import { useForm, useFormState } from "react-hook-form";
 import {
 	DefaultInputComponentProps,
 	isPossiblePhoneNumber,
-	formatPhoneNumber,
 } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
 import { cpfMask } from "utils/cpfMask";
@@ -43,20 +42,37 @@ const StageOneDocuments = () => {
 			const { documentType, documentNumber, fullName, birthDate, phone } =
 				values;
 
-			const nationalNumber = formatPhoneNumber(phone);
-			const numberWithoutMask = maskRevert(nationalNumber);
-
-			window.sessionStorage.setItem("documentNumber", documentType);
-			window.sessionStorage.setItem("documentType", documentNumber);
+			window.sessionStorage.setItem("documentType", documentType);
+			window.sessionStorage.setItem("documentNumber", documentNumber);
 			window.sessionStorage.setItem("fullName", fullName);
 			window.sessionStorage.setItem("birthDate", birthDate);
-			window.sessionStorage.setItem("phone", numberWithoutMask);
+			window.sessionStorage.setItem("phone", phone);
 
 			router.push("/documentos/stage/2");
-
-			return;
 		}
 	};
+
+	useEffect(() => {
+		const documentType = window.sessionStorage.getItem("documentType");
+		const documentNumber = window.sessionStorage.getItem("documentNumber");
+		const fullName = window.sessionStorage.getItem("fullName");
+		const birthDate = window.sessionStorage.getItem("birthDate");
+		const phone = window.sessionStorage.getItem("phone");
+
+		if (documentType)
+			setValue(
+				"documentType",
+				documentType as "BR_CPF" | "BR_CNH" | "PASSPORT",
+			);
+
+		if (documentNumber) setValue("documentNumber", documentNumber);
+
+		if (fullName) setValue("fullName", fullName);
+
+		if (birthDate) setValue("birthDate", birthDate);
+
+		if (phone) setValue("phone", phone);
+	}, [setValue]);
 
 	return (
 		<form
