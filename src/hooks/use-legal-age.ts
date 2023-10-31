@@ -1,8 +1,7 @@
 "use client";
 
-import { useContext } from "react";
-
 import { LegalAgeContext } from "contexts/legal-age";
+import { useContext } from "react";
 
 export const useLegalAge = () => {
 	const context = useContext(LegalAgeContext);

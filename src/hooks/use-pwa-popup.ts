@@ -1,8 +1,7 @@
 "use client";
 
-import { useContext } from "react";
-
 import { PwaContext } from "contexts/pwa-popup";
+import { useContext } from "react";
 
 export const usePwaPopUp = () => {
 	const context = useContext(PwaContext);

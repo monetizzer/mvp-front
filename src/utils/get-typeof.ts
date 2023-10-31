@@ -10,6 +10,7 @@ export type Type =
 	| "undefined"
 	| "unknown";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getTypeof = (value?: any): Type => {
 	switch (typeof value) {
 		case "object": {

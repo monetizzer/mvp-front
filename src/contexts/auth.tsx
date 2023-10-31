@@ -60,7 +60,7 @@ export const AuthProvider: FC<Props> = ({ children }) => {
 							<h2 className="card-title text-3xl text-center">Las Musas</h2>
 						</header>
 						<div className="flex items-center justify-center flex-col">
-							<progress className="progress w-56"></progress>
+							<progress className="progress w-56" />
 						</div>
 					</div>
 				</section>

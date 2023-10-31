@@ -1,3 +1,3 @@
 export enum PaymentProviderEnum {
-	'GERENCIANET' = 'GERENCIANET',
+	"GERENCIANET" = "GERENCIANET",
 }

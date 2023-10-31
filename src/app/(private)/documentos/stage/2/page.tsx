@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter, redirect, RedirectType } from "next/navigation";
 import { useEffect } from "react";
 import { useForm, useFormState } from "react-hook-form";
+import { cepMask } from "utils/cepMask";
+import { maskRevert } from "utils/maskRevert";
 
 interface IForm {
 	line1: string;
@@ -21,7 +23,7 @@ export default function Documents() {
 			line1: "",
 			line2: "",
 			postalCode: "",
-			country: "",
+			country: "BR",
 			state: "",
 			city: "",
 		},
@@ -41,7 +43,7 @@ export default function Documents() {
 
 	const onSubmit = (values: IForm) => {
 		if (isValid) {
-			const { line1, line2, postalCode, city, state } = values;
+			const { line1, line2, postalCode, country, city, state } = values;
 
 			window.sessionStorage.setItem(
 				"address",
@@ -49,6 +51,7 @@ export default function Documents() {
 					line1,
 					line2,
 					postalCode,
+					country,
 					city,
 					state,
 				}),
@@ -108,19 +111,30 @@ export default function Documents() {
 					isFullWidth
 					{...register("postalCode", {
 						required: true,
-						pattern: /[0-9]{8}/,
+						onChange: (e) => {
+							const value = cepMask(e.target.value);
+
+							setValue("postalCode", value);
+						},
+						setValueAs: (value: string) => {
+							const valueWithoutMask = maskRevert(value);
+
+							return valueWithoutMask;
+						},
 					})}
 				/>
-				<Input
+				<label className="label font-bold" htmlFor="state">
+					País
+				</label>
+				<select
+					className="select select-bordered"
 					id="country"
-					type="text"
-					labelMessage="País"
-					isFullWidth
-					{...register("city", {
+					{...register("state", {
 						required: true,
-						maxLength: 100,
 					})}
-				/>
+				>
+					<option value="BR">Brasil</option>
+				</select>
 				<label className="label font-bold" htmlFor="state">
 					Estado
 				</label>

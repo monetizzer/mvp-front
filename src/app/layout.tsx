@@ -1,12 +1,12 @@
+import { Footer } from "components/Footer";
 import { LegalAgePopUp } from "components/LegalAgePopUp";
 import { NavBar } from "components/NavBar";
 import { PwaPopUp } from "components/PwaPopUp";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Head from "next/head";
-import Providers from "utils/providers";
 import { ReactNode } from "react";
-import { Footer } from "components/Footer";
+import Providers from "utils/providers";
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import "react-phone-number-input/style.css";
