@@ -1,14 +1,14 @@
-import { TransactionTypeEnum } from './transaction-type';
+import { TransactionTypeEnum } from "./transaction-type";
 
 export enum TransactionStatusEnum {
-	'PROCESSING' = 'PROCESSING',
-	'COMPLETED' = 'COMPLETED',
-	'FAILED' = 'FAILED',
+	"PROCESSING" = "PROCESSING",
+	"COMPLETED" = "COMPLETED",
+	"FAILED" = "FAILED",
 
 	// Exclusive for type=INCOME
-	'REFUND_PROCESSING' = 'REFUND_PROCESSING',
-	'REFUND_COMPLETED' = 'REFUND_COMPLETED',
-	'REFUND_FAILED' = 'REFUND_FAILED',
+	"REFUND_PROCESSING" = "REFUND_PROCESSING",
+	"REFUND_COMPLETED" = "REFUND_COMPLETED",
+	"REFUND_FAILED" = "REFUND_FAILED",
 }
 
 interface CanChangeStatusInput {

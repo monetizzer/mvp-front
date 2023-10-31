@@ -1,7 +1,5 @@
 "use client";
 
-import { isCpf } from "utils/isCpf";
-import { isCnpj } from "utils/isCnpj";
 import { Input } from "components/Input";
 import { useRouter } from "next/navigation";
 import { RefAttributes, forwardRef, useEffect } from "react";
@@ -11,8 +9,10 @@ import {
 	isPossiblePhoneNumber,
 } from "react-phone-number-input";
 import PhoneInput from "react-phone-number-input/react-hook-form-input";
-import { cpfMask } from "utils/cpfMask";
 import { cnpjMask } from "utils/cnpjMask";
+import { cpfMask } from "utils/cpfMask";
+import { isCnpj } from "utils/isCnpj";
+import { isCpf } from "utils/isCpf";
 import { maskRevert } from "utils/maskRevert";
 
 interface IForm {
@@ -36,6 +36,10 @@ const StageOneDocuments = () => {
 		});
 	const { isValid, isSubmitting } = useFormState({ control });
 	const router = useRouter();
+
+	const documentStatus = window.localStorage.getItem("documentStatus"); // temp
+
+	if (documentStatus === "sent") router.replace("/documentos/status/sent"); // temp
 
 	const onSubmit = (values: IForm) => {
 		if (isValid) {
@@ -178,12 +182,14 @@ const StageOneDocuments = () => {
 				/>
 				<PhoneInput
 					name="phone"
+					defaultCountry="BR"
 					control={control}
 					international
 					rules={{
 						required: true,
 						validate: isPossiblePhoneNumber,
 					}}
+					// eslint-disable-next-line react/display-name
 					inputComponent={forwardRef(
 						(
 							props: DefaultInputComponentProps &

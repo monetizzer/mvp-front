@@ -1,14 +1,14 @@
 export enum DocumentStatusEnum {
-	'00' = '00',
-	'V0' = 'V0',
-	'R0' = 'R0',
-	'A0' = 'A0',
-	'AV' = 'AV',
-	'VV' = 'VV',
-	'VR' = 'VR',
-	'RR' = 'RR',
-	'AR' = 'AR',
-	'AA' = 'AA',
+	"00" = "00",
+	"V0" = "V0",
+	"R0" = "R0",
+	"A0" = "A0",
+	"AV" = "AV",
+	"VV" = "VV",
+	"VR" = "VR",
+	"RR" = "RR",
+	"AR" = "AR",
+	"AA" = "AA",
 }
 
 interface CanChangeStatusInput {
@@ -21,7 +21,7 @@ export const canChangeStatus = ({
 	newStatus,
 }: CanChangeStatusInput): boolean => {
 	switch (oldStatus) {
-		case DocumentStatusEnum['00']:
+		case DocumentStatusEnum["00"]:
 		default: {
 			return [DocumentStatusEnum.V0, DocumentStatusEnum.VV].includes(newStatus);
 		}

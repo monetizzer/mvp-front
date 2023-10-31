@@ -1,9 +1,9 @@
 export enum ProductStatusEnum {
-	'IN_PREPARATION' = 'IN_PREPARATION',
-	'VALIDATING' = 'VALIDATING',
-	'APPROVED' = 'APPROVED',
-	'REPROVED' = 'REPROVED',
-	'PAUSED' = 'PAUSED',
+	"IN_PREPARATION" = "IN_PREPARATION",
+	"VALIDATING" = "VALIDATING",
+	"APPROVED" = "APPROVED",
+	"REPROVED" = "REPROVED",
+	"PAUSED" = "PAUSED",
 }
 
 interface CanChangeStatusInput {

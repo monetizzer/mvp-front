@@ -12,7 +12,7 @@ const PrivateLayout: FC<Props> = ({ children }) => {
 	const auth = useAuth();
 	const { user } = auth;
 
-	if (user === null) redirect("/login", RedirectType.replace);
+	if (user === null) redirect("/login", RedirectType.push);
 
 	return <>{children}</>;
 };

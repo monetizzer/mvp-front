@@ -1,64 +1,88 @@
 "use client";
 
 import { Input } from "components/Input";
+import { getCookie } from "cookies-next";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useForm, useFormState, useFormContext } from "react-hook-form";
+import { RedirectType, redirect, useRouter } from "next/navigation";
+import { useForm, useFormState } from "react-hook-form";
+import { formatPhoneNumber } from "react-phone-number-input";
+import { maskRevert } from "utils/maskRevert";
 
 interface IForm {
-	documentPicture: string;
-	selfieWithDocument: string;
+	documentPicture: FileList;
+	selfieWithDocument: FileList;
 }
 
-interface IFormContext {
-	documentType: string;
-	documentNumber: string;
-	name: string;
-	phone: string;
-
-	line1: string;
-	line2: string;
-	postalCode: string;
-	city: string;
-	state: string;
-
-	documentPicture: string;
-	selfieWithDocument: string;
-}
+const API_URL = process.env["NEXT_PUBLIC_API_URL"];
 
 export default function Documents() {
 	const { handleSubmit, register, control } = useForm<IForm>({
 		defaultValues: {
-			documentPicture: "",
-			selfieWithDocument: "",
+			documentPicture: undefined,
+			selfieWithDocument: undefined,
 		},
 	});
 	const { isValid, isSubmitting } = useFormState({ control });
-	const methods = useFormContext<IFormContext>();
 	const router = useRouter();
 
-	const onSubmit = (values: IForm) => {
+	const address = window.sessionStorage.getItem("address");
+
+	if (!address) {
+		redirect("/documentos/stage/2", RedirectType.replace);
+	}
+
+	const documentType = window.sessionStorage.getItem("documentType");
+	const documentNumber = window.sessionStorage.getItem("documentNumber");
+	const fullName = window.sessionStorage.getItem("fullName");
+	const birthDate = window.sessionStorage.getItem("birthDate");
+	const phone = window.sessionStorage.getItem("phone");
+
+	if (!documentNumber && !documentType && !fullName && !birthDate && !phone) {
+		redirect("/documentos/stage/1", RedirectType.replace);
+	}
+
+	const onSubmit = async (values: IForm) => {
 		if (isValid) {
-			const { setValue, getValues } = methods;
+			try {
+				const nationalNumber = formatPhoneNumber(phone!);
+				const numberWithoutMask = maskRevert(nationalNumber);
+				const formData = new FormData();
 
-			setValue("documentPicture", values.documentPicture);
-			setValue("selfieWithDocument", values.selfieWithDocument);
+				formData.append("type", documentType!);
+				formData.append("documentNumber", documentNumber!);
+				formData.append("fullName", fullName!);
+				formData.append("birthDate", birthDate!);
+				formData.append("phone", numberWithoutMask);
+				formData.append("address", address);
+				formData.append("documentPicture", values.documentPicture[0]);
+				formData.append("selfieWithDocument", values.selfieWithDocument[0]);
 
-			const documentPicture = getValues("documentPicture");
-			const selfieWithDocument = getValues("selfieWithDocument");
-			const documentType = getValues("documentType");
-			const documentNumber = getValues("documentNumber");
-			const name = getValues("name");
-			const phone = getValues("phone");
-			const line1 = getValues("line1");
-			const line2 = getValues("line2");
-			const postalCode = getValues("postalCode");
-			const city = getValues("city");
-			const state = getValues("state");
+				window.sessionStorage.removeItem("documentType");
+				window.sessionStorage.removeItem("documentNumber");
+				window.sessionStorage.removeItem("fullName");
+				window.sessionStorage.removeItem("birthDate");
+				window.sessionStorage.removeItem("phone");
+				window.sessionStorage.removeItem("address");
 
-			router.push("/documentos");
+				const token = getCookie("token");
+				const response = await fetch(`${API_URL}/documents/complete`, {
+					method: "POST",
+					body: formData,
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
 
-			return;
+				if (response.ok) {
+					window.localStorage.setItem("documentStatus", "sent"); // temp
+
+					router.push("/documentos/status/success");
+				}
+			} catch (error) {
+				console.log(error);
+
+				router.push("/documentos/status/error");
+			}
 		}
 	};
 
@@ -75,6 +99,17 @@ export default function Documents() {
 					isFullWidth
 					{...register("documentPicture", {
 						required: true,
+						validate: (value: FileList) => {
+							const image = value[0];
+							const fiveMB = 51240;
+							const imageSizeInMB = image.size / 1048;
+
+							if (imageSizeInMB <= fiveMB) {
+								return /(png|jpg|jpeg)$/.test(image.type);
+							}
+
+							return false;
+						},
 					})}
 				/>
 				<Input
@@ -84,11 +119,22 @@ export default function Documents() {
 					isFullWidth
 					{...register("selfieWithDocument", {
 						required: true,
+						validate: (value: FileList) => {
+							const image = value[0];
+							const fiveMB = 51240;
+							const imageSizeInMB = image.size / 1048;
+
+							if (imageSizeInMB <= fiveMB) {
+								return /(png|jpg|jpeg)$/.test(image.type);
+							}
+
+							return false;
+						},
 					})}
 				/>
 				<button
 					type="submit"
-					disabled={isSubmitting}
+					disabled={isSubmitting || !isValid}
 					title="Enviar"
 					className="btn btn-secondary w-full mt-4"
 				>
