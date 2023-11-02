@@ -159,11 +159,7 @@ const StageOneDocuments = () => {
 					isFullWidth
 					{...register("fullName", {
 						required: true,
-						validate: (value: string) => {
-							return /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(
-								value,
-							);
-						},
+						pattern: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]/,
 						setValueAs: (value: string) => {
 							const newValue = value.trimStart().trimEnd();
 

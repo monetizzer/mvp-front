@@ -129,7 +129,7 @@ export default function Documents() {
 				<select
 					className="select select-bordered"
 					id="country"
-					{...register("state", {
+					{...register("country", {
 						required: true,
 					})}
 				>

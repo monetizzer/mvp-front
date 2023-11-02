@@ -15,13 +15,13 @@ interface IStatus {
 
 interface Props {
 	params: {
-		code: "success" | "error" | "sent";
+		code: "success" | "error" | "created";
 	};
 }
 
 const status: IStatus = {
 	success: {
-		title: "Documentos enviados com sucesso.",
+		title: "Loja criada com sucesso.",
 		links: [
 			{
 				title: "Home",
@@ -30,16 +30,16 @@ const status: IStatus = {
 		],
 	},
 	error: {
-		title: "Documentos não enviados com sucesso.",
+		title: "Loja não criada com sucesso.",
 		links: [
 			{
 				title: "Tente novamente",
-				url: "/documentos/stage/1",
+				url: "/criar-loja",
 			},
 		],
 	},
-	sent: {
-		title: "Documentos já enviados.",
+	created: {
+		title: "Você já possui uma loja.",
 		links: [
 			{
 				title: "Home",
@@ -79,7 +79,7 @@ const Status: FC<Props> = ({ params }) => {
 };
 
 export const generateStaticParams = () => {
-	return [{ code: "success" }, { code: "error" }, { code: "sent" }];
+	return [{ code: "success" }, { code: "error" }, { code: "created" }];
 };
 
 export default Status;

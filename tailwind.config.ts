@@ -21,13 +21,13 @@ module.exports = {
 			{
 				lasmusas: {
 					primary: "#803b7e",
-					"primary-content": "#ffffff",
+					"primary-content": "#f9daf4",
 					secondary: "#ae4c7c",
-					"secondary-content": "#ffffff",
+					"secondary-content": "#f9daf4",
 					accent: "#f9daf4",
 					neutral: "#ae4c7c",
-					"neutral-content": "#ffffff",
-					"base-100": "#F2E3EF",
+					"neutral-content": "#f9daf4",
+					"base-100": "#f9daf4",
 					"base-content": "#333333",
 					".btn-discord": {
 						"background-color": "#5865F2",
